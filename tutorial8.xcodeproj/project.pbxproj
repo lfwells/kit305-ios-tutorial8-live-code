@@ -44,6 +44,7 @@
 		D3E976BC2BE78FD600D2ACD5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E976BB2BE78FD600D2ACD5 /* Movie.swift */; };
 		D3E976BE2BE7907800D2ACD5 /* MovieUITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E976BD2BE7907800D2ACD5 /* MovieUITableViewController.swift */; };
 		D3E976C02BE7909B00D2ACD5 /* MovieUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E976BF2BE7909B00D2ACD5 /* MovieUITableViewCell.swift */; };
+		D3E976C22BE7957400D2ACD5 /* MoviesAsAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E976C12BE7957400D2ACD5 /* MoviesAsAViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		D3E976BB2BE78FD600D2ACD5 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		D3E976BD2BE7907800D2ACD5 /* MovieUITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieUITableViewController.swift; sourceTree = "<group>"; };
 		D3E976BF2BE7909B00D2ACD5 /* MovieUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieUITableViewCell.swift; sourceTree = "<group>"; };
+		D3E976C12BE7957400D2ACD5 /* MoviesAsAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAsAViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				D3E976BB2BE78FD600D2ACD5 /* Movie.swift */,
 				D3E976BD2BE7907800D2ACD5 /* MovieUITableViewController.swift */,
 				D3E976BF2BE7909B00D2ACD5 /* MovieUITableViewCell.swift */,
+				D3E976C12BE7957400D2ACD5 /* MoviesAsAViewController.swift */,
 			);
 			path = tutorial8;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				D3E9766F2BE787AD00D2ACD5 /* AppDelegate.swift in Sources */,
 				D3E976C02BE7909B00D2ACD5 /* MovieUITableViewCell.swift in Sources */,
 				D3E976BC2BE78FD600D2ACD5 /* Movie.swift in Sources */,
+				D3E976C22BE7957400D2ACD5 /* MoviesAsAViewController.swift in Sources */,
 				D3E976BE2BE7907800D2ACD5 /* MovieUITableViewController.swift in Sources */,
 				D3E976712BE787AD00D2ACD5 /* SceneDelegate.swift in Sources */,
 			);
