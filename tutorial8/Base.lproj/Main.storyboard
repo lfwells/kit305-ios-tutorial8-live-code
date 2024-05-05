@@ -91,6 +91,9 @@
                                 <rect key="frame" x="16" y="353" width="361" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                <connections>
+                                    <segue destination="MmI-Lt-nTV" kind="unwind" unwindAction="unwindToMovieListWithCancelWithSender:" id="Dya-dk-4pH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -110,14 +113,22 @@
                             <constraint firstItem="6Rc-YV-Kp2" firstAttribute="top" secondItem="3m3-Wz-dvg" secondAttribute="bottom" constant="34" id="qja-w7-hJd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="1Qf-nf-neW"/>
+                    <navigationItem key="navigationItem" id="1Qf-nf-neW">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="zIu-qr-cpo">
+                            <connections>
+                                <action selector="onSave:" destination="BYZ-38-t0r" id="sJA-jj-Fsr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="durationLabel" destination="3m3-Wz-dvg" id="7TM-sg-o2y"/>
                         <outlet property="titleLabel" destination="pBS-rt-arn" id="zPI-Ut-ECA"/>
                         <outlet property="yearLabel" destination="z9X-kX-wam" id="j7O-vD-LlF"/>
+                        <segue destination="MmI-Lt-nTV" kind="unwind" identifier="saveSegue" unwindAction="unwindToMovieListWithSender:" id="qBh-Lf-9Bu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="MmI-Lt-nTV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1052.6717557251909" y="-27.464788732394368"/>
         </scene>
