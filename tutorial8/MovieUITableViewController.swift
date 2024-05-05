@@ -89,6 +89,40 @@ class MovieUITableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        super.prepare(for: segue, sender: sender)
+        
+        // is this the segue to the details screen? (in more complex apps, there is more than one segue per screen)
+        if segue.identifier == "ShowMovieDetailSegue"
+        {
+              //down-cast from UIViewController to DetailViewController (this could fail if we didn’t link things up properly)
+              guard let detailViewController = segue.destination as? DetailViewController else
+              {
+                  fatalError("Unexpected destination: \(segue.destination)")
+              }
+
+              //down-cast from UITableViewCell to MovieUITableViewCell (this could fail if we didn’t link things up properly)
+              guard let selectedMovieCell = sender as? MovieUITableViewCell else
+              {
+                  fatalError("Unexpected sender: \( String(describing: sender))")
+              }
+
+              //get the number of the row that was pressed (this could fail if the cell wasn’t in the table but we know it is)
+              guard let indexPath = tableView.indexPath(for: selectedMovieCell) else
+              {
+                  fatalError("The selected cell is not being displayed by the table")
+              }
+
+              //work out which movie it is using the row number
+              let selectedMovie = movies[indexPath.row]
+
+              //send it to the details screen
+              detailViewController.movie = selectedMovie
+              detailViewController.movieIndex = indexPath.row
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

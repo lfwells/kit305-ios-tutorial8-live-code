@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BlP-ds-Bsx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xRu-FE-DNs">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--MovieUI Table View Controller-->
+        <!--Movies-->
         <scene sceneID="lQs-HF-M78">
             <objects>
                 <tableViewController id="BlP-ds-Bsx" customClass="MovieUITableViewController" customModule="tutorial8" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,6 +49,7 @@
                                 <connections>
                                     <outlet property="subtitleLabel" destination="kyH-2i-pZt" id="bl3-E8-9dY"/>
                                     <outlet property="titleLabel" destination="rex-jJ-uZQ" id="eGc-V8-gJw"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowMovieDetailSegue" id="Ik5-DY-hON"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -57,25 +58,86 @@
                             <outlet property="delegate" destination="BlP-ds-Bsx" id="boE-rN-c8G"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Movies" id="TZp-Vr-uGt"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWT-4U-cJ5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-753.43511450381675" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="173.2824427480916" y="-27.464788732394368"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="tutorial8" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="DetailViewController" customModule="tutorial8" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pBS-rt-arn">
+                                <rect key="frame" x="16" y="174" width="361" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z9X-kX-wam">
+                                <rect key="frame" x="16" y="228" width="361" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3m3-Wz-dvg">
+                                <rect key="frame" x="16" y="285" width="361" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rc-YV-Kp2">
+                                <rect key="frame" x="16" y="353" width="361" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="z9X-kX-wam" firstAttribute="top" secondItem="pBS-rt-arn" secondAttribute="bottom" constant="20" id="7vk-BF-76s"/>
+                            <constraint firstItem="3m3-Wz-dvg" firstAttribute="top" secondItem="z9X-kX-wam" secondAttribute="bottom" constant="23" id="IDo-rc-1hN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Rc-YV-Kp2" secondAttribute="trailing" constant="16" id="OMf-mZ-XSu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3m3-Wz-dvg" secondAttribute="trailing" constant="16" id="PXp-b1-4A7"/>
+                            <constraint firstItem="3m3-Wz-dvg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="RlO-sM-go8"/>
+                            <constraint firstItem="6Rc-YV-Kp2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Yds-sl-8Qw"/>
+                            <constraint firstItem="z9X-kX-wam" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="bj8-QF-Uwh"/>
+                            <constraint firstItem="pBS-rt-arn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="czd-FS-exw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="z9X-kX-wam" secondAttribute="trailing" constant="16" id="f6r-23-Yzc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pBS-rt-arn" secondAttribute="trailing" constant="16" id="keg-BJ-SH1"/>
+                            <constraint firstItem="pBS-rt-arn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="71" id="mgB-h9-Ggm"/>
+                            <constraint firstItem="6Rc-YV-Kp2" firstAttribute="top" secondItem="3m3-Wz-dvg" secondAttribute="bottom" constant="34" id="qja-w7-hJd"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="1Qf-nf-neW"/>
+                    <connections>
+                        <outlet property="durationLabel" destination="3m3-Wz-dvg" id="7TM-sg-o2y"/>
+                        <outlet property="titleLabel" destination="pBS-rt-arn" id="zPI-Ut-ECA"/>
+                        <outlet property="yearLabel" destination="z9X-kX-wam" id="j7O-vD-LlF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131" y="-27"/>
+            <point key="canvasLocation" x="1052.6717557251909" y="-27.464788732394368"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8D8-SO-KgW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xRu-FE-DNs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OvO-JR-SgN">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BlP-ds-Bsx" kind="relationship" relationship="rootViewController" id="9uW-Gz-Wmb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wx0-4u-Fgh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-753.43511450381675" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <resources>
