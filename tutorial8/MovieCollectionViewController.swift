@@ -1,20 +1,20 @@
 //
-//  TestCollectionViewController.swift
+//  MovieCollectionViewController.swift
 //  tutorial8
 //
-//  Created by Lindsay Wells on 5/5/2024.
+//  Created by Lindsay Wells on 6/5/2024.
 //
 
 import UIKit
+
 import Firebase
-import FirebaseDatabase
-import FirebaseDatabaseSwift
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
-private let reuseIdentifier = "MyCell"
+private let reuseIdentifier = "Cell"
 
-class TestCollectionViewController: UICollectionViewController {
+class MovieCollectionViewController: UICollectionViewController {
 
-    
     var movies = [Movie]()
     
     override func viewDidLoad()
@@ -26,8 +26,7 @@ class TestCollectionViewController: UICollectionViewController {
 
             // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
             // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-         
+            
             let db = Firestore.firestore()
             let movieCollection = db.collection("movies")
             movieCollection.getDocuments() { (result, err) in
@@ -64,39 +63,30 @@ class TestCollectionViewController: UICollectionViewController {
             
         }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return movies.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath)
+
+        let movie = movies[indexPath.row]
+        
+        //cast the cell to the right type
         if let movieCell = cell as? MovieCollectionViewCell
         {
-            print(movieCell)
-            movieCell.item.text = movies[indexPath.row].title
+            movieCell.titleLabel.text = movie.title
+            //movieCell.subtitleLabel.text = String(movie.year)
         }
-    
+
         return cell
     }
 

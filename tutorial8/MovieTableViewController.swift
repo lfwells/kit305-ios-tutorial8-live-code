@@ -1,17 +1,18 @@
 //
-//  MovieUITableViewController.swift
+//  MovieTableViewController.swift
 //  tutorial8
 //
-//  Created by Lindsay Wells on 5/5/2024.
+//  Created by Lindsay Wells on 6/5/2024.
 //
 
 import UIKit
+
 import Firebase
-import FirebaseDatabase
-import FirebaseDatabaseSwift
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
-class MovieUITableViewController: UITableViewController {
-
+class MovieTableViewController: UITableViewController 
+{
     var movies = [Movie]()
     
     override func viewDidLoad()
@@ -67,77 +68,25 @@ class MovieUITableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return movies.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell 
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieUITableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath)
 
-        //get the movie for this row
         let movie = movies[indexPath.row]
-
-        //down-cast the cell from UITableViewCell to our cell class MovieUITableViewCell
-        //note, this could fail, so we use an if let.
-        if let movieCell = cell as? MovieUITableViewCell
+        
+        //cast the cell to the right type
+        if let movieCell = cell as? MovieTableViewCell
         {
-            //populate the cell
-             movieCell.titleLabel.text = movie.title
-             movieCell.subtitleLabel.text = String(movie.year)
+            movieCell.titleLabel.text = movie.title
+            movieCell.subtitleLabel.text = String(movie.year)
         }
 
         return cell
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        super.prepare(for: segue, sender: sender)
-        
-        // is this the segue to the details screen? (in more complex apps, there is more than one segue per screen)
-        if segue.identifier == "ShowMovieDetailSegue"
-        {
-              //down-cast from UIViewController to DetailViewController (this could fail if we didn’t link things up properly)
-              guard let detailViewController = segue.destination as? DetailViewController else
-              {
-                  fatalError("Unexpected destination: \(segue.destination)")
-              }
 
-              //down-cast from UITableViewCell to MovieUITableViewCell (this could fail if we didn’t link things up properly)
-              guard let selectedMovieCell = sender as? MovieUITableViewCell else
-              {
-                  fatalError("Unexpected sender: \( String(describing: sender))")
-              }
-
-              //get the number of the row that was pressed (this could fail if the cell wasn’t in the table but we know it is)
-              guard let indexPath = tableView.indexPath(for: selectedMovieCell) else
-              {
-                  fatalError("The selected cell is not being displayed by the table")
-              }
-
-              //work out which movie it is using the row number
-              let selectedMovie = movies[indexPath.row]
-
-              //send it to the details screen
-              detailViewController.movie = selectedMovie
-              detailViewController.movieIndex = indexPath.row
-        }
-    }
-    
-    @IBAction func unwindToMovieList(sender: UIStoryboardSegue)
-    {
-        //we could reload from db, but lets just trust the local movie object
-        if let detailScreen = sender.source as? DetailViewController
-        {
-            movies[detailScreen.movieIndex!] = detailScreen.movie!
-            tableView.reloadData()
-        }
-    }
-
-    @IBAction func unwindToMovieListWithCancel(sender: UIStoryboardSegue)
-    {
-        print("cancelled")
-    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
